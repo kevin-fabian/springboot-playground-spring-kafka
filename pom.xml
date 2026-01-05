@@ -32,7 +32,7 @@
 	</properties>
 	<modules>
 		<module>spring-kafka-transactional</module>
-/		<module>springboot-consumer-batch-kafka</module>
+		<module>springboot-consumer-batch-kafka</module>
 		<module>springboot-kafka-avro</module>
 		<module>springboot-kafka-avro-consumer</module>
 		<module>springboot-kafka-listener-integration-test</module>

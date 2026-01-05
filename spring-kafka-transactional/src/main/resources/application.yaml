@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./db/planet_db
+    driver-class-name: org.h2.Driver
+  kafka:
+    bootstrap-servers: http://localhost:9092
+    producer:
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      transaction-id-prefix: planet-tx
+      properties:
+        spring.json.type.mapping: planetEvent:com.fabiankevin.springkafkatransactional.models.PlanetEvent
+        enable.idempotence: true
+        transactional.id: planet-producer
+        transactional-id-prefix: tx
+      retries: 9999
+    consumer:
+      group-id: test
+      enable-auto-commit: true
+#      isolation-level: read_committed
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8084

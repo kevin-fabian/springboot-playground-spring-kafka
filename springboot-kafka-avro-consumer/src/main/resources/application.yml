@@ -1,0 +1,35 @@
+spring:
+  kafka:
+    bootstrap-servers: http://localhost:9092
+    consumer:
+      autoCreateTopics: true
+      group-id: TEST-consumer-group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+#    producer:
+#      key-serializer: org.springframework.kafka.support.serializer.DelegatingByTypeSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.DelegatingByTypeSerializer
+    properties:
+      specific.avro.reader: true
+      schema.registry.url: http://localhost:8081
+    listener:
+      deliveryAttemptHeader: true
+    retry:
+      topic:
+        enabled: false
+#    retry:
+#
+#      topic:
+#        enabled: false
+
+logging:
+  level:
+    org:
+      springframework.retry: DEBUG
+
+server:
+  port: 8085

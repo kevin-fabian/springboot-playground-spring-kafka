@@ -1,0 +1,21 @@
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      autoCreateTopics: true
+      acks: all
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        enable.idempotence: true
+    properties:
+      schema.registry.url: http://localhost:8081
+      auto.register.schemas: true
+
+logger:
+  level:
+    io.confluent.kafka.schemaregistry.client: TRACE
+
+
+

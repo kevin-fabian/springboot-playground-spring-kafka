@@ -1,0 +1,13 @@
+spring:
+  kafka:
+    bootstrap-servers: http://localhost:9092
+    producer:
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: greetings:com.fabiankevin.springbootkafkaproducer.Greetings
+      retries: 9999
+
+#    spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+#    spring.kafka.producer.properties.spring.json.type.mapping=cat:com.mycat.Cat,hat:com.myhat.Hat

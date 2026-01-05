@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: springboot-spring-kafka-stream
+
+
